@@ -406,7 +406,7 @@
             </div>
           </div>
 
-          <!-- COMPOSIÇÃO DE GARRAFAS (Para Combos e outras categorias) -->
+          <!-- COMPOSIÇÃO DE GARRAFAS -->
           <div id="admin-bottles-section" class="border-t border-slate-200 pt-3">
             <label class="block font-bold text-slate-800 mb-2 flex items-center gap-1">
               <i data-lucide="milk" class="w-4 h-4 text-hype-purple"></i> Quantidade de Garrafas no Combo
@@ -427,7 +427,7 @@
             </div>
           </div>
 
-          <!-- CONFIGURAÇÃO DE SABORES (Visível apenas para HYPE DRINK) -->
+          <!-- CONFIGURAÇÃO DE SABORES -->
           <div id="admin-flavors-section" class="border-t border-slate-200 pt-3 hidden space-y-3">
             <label class="block font-bold text-slate-800 flex items-center gap-1">
               <i data-lucide="cup-soda" class="w-4 h-4 text-hype-purple"></i> Configuração de Sabores do Hype Drink
@@ -437,13 +437,11 @@
               <div class="bg-purple-50/60 p-3 rounded-2xl border border-purple-200">
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 1 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt1" placeholder="Ex: LIMÃO, AMORA, ABACAXI" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
-                <span class="text-[10px] text-slate-500 mt-1 block">Exibidos na primeira seleção de sabor.</span>
               </div>
 
               <div class="bg-purple-50/60 p-3 rounded-2xl border border-purple-200">
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 2 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt2" placeholder="Ex: LIMÃO, MORANGO, MANGA, ABACAXI, UVA, AZUL ESPACIAL" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
-                <span class="text-[10px] text-slate-500 mt-1 block">Exibidos na segunda seleção (se não for apenas 1 sabor).</span>
               </div>
             </div>
           </div>
@@ -487,7 +485,7 @@
           </div>
         </div>
 
-        <!-- LISTA DE PRODUTOS CADASTRADOS NO ADMIN -->
+        <!-- LISTA DE PRODUTOS CADASTRADOS -->
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
           <h4 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
             <i data-lucide="list" class="w-4 h-4 text-hype-purple"></i> Produtos Cadastrados
@@ -545,26 +543,20 @@
           </label>
         </div>
 
-        <!-- OPÇÃO 1 -->
         <div id="box-flavor-opt1" class="space-y-1.5">
           <label class="block font-extrabold text-slate-800 text-xs flex items-center gap-1">
             <span class="w-5 h-5 rounded-full bg-hype-purple text-white inline-flex items-center justify-center text-[10px]">1</span>
             Escolha o Sabor 1 *
           </label>
-          <select id="select-flavor-1" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50">
-            <!-- Opções dinâmicas -->
-          </select>
+          <select id="select-flavor-1" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50"></select>
         </div>
 
-        <!-- OPÇÃO 2 -->
         <div id="box-flavor-opt2" class="space-y-1.5 transition-all">
           <label class="block font-extrabold text-slate-800 text-xs flex items-center gap-1">
             <span class="w-5 h-5 rounded-full bg-hype-purple text-white inline-flex items-center justify-center text-[10px]">2</span>
             Escolha o Sabor 2 *
           </label>
-          <select id="select-flavor-2" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50">
-            <!-- Opções dinâmicas -->
-          </select>
+          <select id="select-flavor-2" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50"></select>
         </div>
       </div>
 
@@ -577,16 +569,14 @@
     </div>
   </div>
 
-  <!-- CONTAINER DE TEMPLATE PDF (OCULTO) -->
   <div id="pdf-template-container" class="hidden"></div>
 
-  <!-- NOTIFICAÇÃO TOAST -->
   <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl z-50 transform transition-all duration-300 translate-y-24 opacity-0 flex items-center gap-2 text-xs font-bold border border-slate-700">
     <i data-lucide="check-circle-2" class="w-4 h-4 text-hype-green"></i>
     <span id="toast-message">Notificação</span>
   </div>
 
-  <!-- FIREBASE SDKs & LÓGICA DE SINCRONIZAÇÃO -->
+  <!-- SCRIPT UNIFICADO COM FIREBASE (FIRESTORE) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -657,16 +647,14 @@
     window.categories = [];
     window.products = [];
     window.cart = JSON.parse(localStorage.getItem('onhype_cart')) || [];
-    window.coupons = JSON.parse(localStorage.getItem('onhype_coupons')) || [
-      { code: 'HYPE10', discount: 10 }
-    ];
+    window.coupons = JSON.parse(localStorage.getItem('onhype_coupons')) || [{ code: 'HYPE10', discount: 10 }];
     window.activeCategory = 'all';
     window.appliedCoupon = null;
     window.uploadedBase64Image = '';
     window.isAdminLoggedIn = false;
     window.currentSelectedProductForFlavor = null;
 
-    // Inicialização do Banco de Dados Firestore e Sincronização em Tempo Real
+    // INICIALIZAÇÃO E SINCRONIZAÇÃO EM TEMPO REAL
     async function initFirestoreData() {
       const catSnapshot = await getDocs(collection(db, "categories"));
       if (catSnapshot.empty) {
@@ -682,7 +670,6 @@
         }
       }
 
-      // Ouvinte em tempo real para Categorias
       onSnapshot(collection(db, "categories"), (snapshot) => {
         window.categories = snapshot.docs.map(doc => doc.id);
         renderCategories();
@@ -690,7 +677,6 @@
         renderAdminCategoryOptions();
       });
 
-      // Ouvinte em tempo real para Produtos
       onSnapshot(collection(db, "products"), (snapshot) => {
         window.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderProducts();
@@ -698,54 +684,30 @@
       });
     }
 
-    window.dbOperations = {
-      async saveProductToFirebase(prod) {
-        await setDoc(doc(db, "products", prod.id), prod);
-      },
-      async deleteProductFromFirebase(id) {
-        await deleteDoc(doc(db, "products", id));
-      },
-      async addCategoryToFirebase(catName) {
-        await setDoc(doc(db, "categories", catName), { name: catName });
-      },
-      async deleteCategoryFromFirebase(catName) {
-        await deleteDoc(doc(db, "categories", catName));
-      }
-    };
-
-    window.onload = function() {
-      lucide.createIcons();
-      initFirestoreData();
-      updateCartUI();
-      renderCouponsList();
-      toggleAdminFormFields();
-    };
-  </script>
-
-  <script>
-    function saveState() {
+    // EXPORTANDO FUNÇÕES PARA O WINDOW PARA O HTML ENCONTRAR
+    window.saveState = function() {
       localStorage.setItem('onhype_cart', JSON.stringify(window.cart));
       localStorage.setItem('onhype_coupons', JSON.stringify(window.coupons));
-    }
+    };
 
-    function showToast(msg) {
+    window.showToast = function(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-message').innerText = msg;
       toast.classList.remove('translate-y-24', 'opacity-0');
       setTimeout(() => {
         toast.classList.add('translate-y-24', 'opacity-0');
       }, 3000);
-    }
+    };
 
-    function formatBottlesString(g300, g500, g1l) {
+    window.formatBottlesString = function(g300, g500, g1l) {
       const parts = [];
       if (g300 > 0) parts.push(`${g300} ${g300 === 1 ? 'garrafa' : 'garrafas'} de 300ml`);
       if (g500 > 0) parts.push(`${g500} ${g500 === 1 ? 'garrafa' : 'garrafas'} de 500ml`);
       if (g1l > 0) parts.push(`${g1l} ${g1l === 1 ? 'garrafa' : 'garrafas'} de 1 Litro`);
       return parts.length > 0 ? `Contém: ${parts.join(' | ')}` : '';
-    }
+    };
 
-    function renderCategories() {
+    window.renderCategories = function() {
       const container = document.getElementById('category-container');
       const allCats = ['all', ...window.categories];
 
@@ -762,19 +724,19 @@
         `;
       }).join('');
       lucide.createIcons();
-    }
+    };
 
-    function switchCategory(cat) {
+    window.switchCategory = function(cat) {
       window.activeCategory = cat;
       renderCategories();
       renderProducts();
-    }
+    };
 
-    function scrollToProducts() {
+    window.scrollToProducts = function() {
       document.getElementById('products-grid').scrollIntoView({ behavior: 'smooth' });
-    }
+    };
 
-    function renderProducts() {
+    window.renderProducts = function() {
       const grid = document.getElementById('products-grid');
       const filtered = window.activeCategory === 'all' 
         ? window.products 
@@ -848,9 +810,9 @@
         `;
       }).join('');
       lucide.createIcons();
-    }
+    };
 
-    function handleAddToCartClick(productId) {
+    window.handleAddToCartClick = function(productId) {
       const prod = window.products.find(p => p.id === productId);
       if (!prod) return;
 
@@ -859,35 +821,32 @@
       } else {
         addToCart(productId, null);
       }
-    }
+    };
 
-    function openFlavorModal(product) {
+    window.openFlavorModal = function(product) {
       window.currentSelectedProductForFlavor = product;
       document.getElementById('flavor-prod-title').innerText = product.title;
       document.getElementById('flavor-prod-price').innerText = `R$ ${product.price.toFixed(2)}`;
 
-      const opt1 = (product.flavorsOpt1 && product.flavorsOpt1.length > 0) ? product.flavorsOpt1 : ["LIMÃO", "AMORA", "ABACAXI"];
-      const opt2 = (product.flavorsOpt2 && product.flavorsOpt2.length > 0) ? product.flavorsOpt2 : ["LIMÃO", "MORANGO", "MANGA", "ABACAXI", "UVA", "AZUL ESPACIAL"];
+      const opt1 = (product.flavorsOpt1 && product.flavorsOpt1.length > 0) ? product.flavorsOpt1 : defaultOpt1;
+      const opt2 = (product.flavorsOpt2 && product.flavorsOpt2.length > 0) ? product.flavorsOpt2 : defaultOpt2;
 
-      const sel1 = document.getElementById('select-flavor-1');
-      sel1.innerHTML = opt1.map(f => `<option value="${f}">${f}</option>`).join('');
-
-      const sel2 = document.getElementById('select-flavor-2');
-      sel2.innerHTML = opt2.map(f => `<option value="${f}">${f}</option>`).join('');
+      document.getElementById('select-flavor-1').innerHTML = opt1.map(f => `<option value="${f}">${f}</option>`).join('');
+      document.getElementById('select-flavor-2').innerHTML = opt2.map(f => `<option value="${f}">${f}</option>`).join('');
 
       document.getElementById('single-flavor-check').checked = false;
       toggleSingleFlavorMode();
 
       document.getElementById('flavor-modal').classList.remove('hidden');
       lucide.createIcons();
-    }
+    };
 
-    function closeFlavorModal() {
+    window.closeFlavorModal = function() {
       document.getElementById('flavor-modal').classList.add('hidden');
       window.currentSelectedProductForFlavor = null;
-    }
+    };
 
-    function toggleSingleFlavorMode() {
+    window.toggleSingleFlavorMode = function() {
       const isSingle = document.getElementById('single-flavor-check').checked;
       const boxOpt2 = document.getElementById('box-flavor-opt2');
       const sel2 = document.getElementById('select-flavor-2');
@@ -899,9 +858,9 @@
         boxOpt2.classList.remove('opacity-40', 'pointer-events-none');
         sel2.disabled = false;
       }
-    }
+    };
 
-    function confirmFlavorAndAddToCart() {
+    window.confirmFlavorAndAddToCart = function() {
       if (!window.currentSelectedProductForFlavor) return;
 
       const isSingle = document.getElementById('single-flavor-check').checked;
@@ -912,9 +871,9 @@
 
       addToCart(window.currentSelectedProductForFlavor.id, selectedFlavorsText);
       closeFlavorModal();
-    }
+    };
 
-    function addToCart(productId, selectedFlavors) {
+    window.addToCart = function(productId, selectedFlavors) {
       const prod = window.products.find(p => p.id === productId);
       if (!prod) return;
 
@@ -935,9 +894,9 @@
       saveState();
       updateCartUI();
       openCartModal();
-    }
+    };
 
-    function changeQty(cartItemId, delta) {
+    window.changeQty = function(cartItemId, delta) {
       const item = window.cart.find(i => (i.cartItemId || i.id) === cartItemId);
       if (!item) return;
 
@@ -948,15 +907,15 @@
 
       saveState();
       updateCartUI();
-    }
+    };
 
-    function removeFromCart(cartItemId) {
+    window.removeFromCart = function(cartItemId) {
       window.cart = window.cart.filter(i => (i.cartItemId || i.id) !== cartItemId);
       saveState();
       updateCartUI();
-    }
+    };
 
-    function updateCartUI() {
+    window.updateCartUI = function() {
       const totalCount = window.cart.reduce((sum, item) => sum + item.qty, 0);
       const subtotal = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
@@ -1023,18 +982,18 @@
       document.getElementById('summary-total').innerText = `R$ ${finalTotal.toFixed(2)}`;
 
       lucide.createIcons();
-    }
+    };
 
-    function openCartModal() {
+    window.openCartModal = function() {
       document.getElementById('cart-modal').classList.remove('hidden');
       updateCartUI();
-    }
+    };
 
-    function closeCartModal() {
+    window.closeCartModal = function() {
       document.getElementById('cart-modal').classList.add('hidden');
-    }
+    };
 
-    function applyCoupon() {
+    window.applyCoupon = function() {
       const code = document.getElementById('coupon-input').value.trim().toUpperCase();
       const msgDiv = document.getElementById('coupon-message');
 
@@ -1048,22 +1007,22 @@
         msgDiv.className = "text-xs font-bold text-center text-red-500 mt-1";
         msgDiv.innerText = "Cupom inválido!";
       }
-    }
+    };
 
-    function showCheckoutForm() {
+    window.showCheckoutForm = function() {
       if (window.cart.length === 0) {
         showToast("Adicione produtos ao carrinho antes!");
         return;
       }
       closeCartModal();
       document.getElementById('checkout-modal').classList.remove('hidden');
-    }
+    };
 
-    function closeCheckoutModal() {
+    window.closeCheckoutModal = function() {
       document.getElementById('checkout-modal').classList.add('hidden');
-    }
+    };
 
-    function maskPhone(input) {
+    window.maskPhone = function(input) {
       let v = input.value.replace(/\D/g, "");
       if (v.length > 11) v = v.substring(0, 11);
       if (v.length > 10) {
@@ -1075,9 +1034,9 @@
       } else {
         input.value = v;
       }
-    }
+    };
 
-    function togglePaymentBoxes(type) {
+    window.togglePaymentBoxes = function(type) {
       document.getElementById('pix-info-box').classList.add('hidden');
       document.getElementById('card-info-box').classList.add('hidden');
       document.getElementById('cash-info-box').classList.add('hidden');
@@ -1085,9 +1044,9 @@
       if (type === 'PIX') document.getElementById('pix-info-box').classList.remove('hidden');
       else if (type === 'CARTAO') document.getElementById('card-info-box').classList.remove('hidden');
       else if (type === 'DINHEIRO') document.getElementById('cash-info-box').classList.remove('hidden');
-    }
+    };
 
-    function copyPixKey() {
+    window.copyPixKey = function() {
       const realKey = "(99) 99158-3550";
       const dummy = document.createElement("input");
       document.body.appendChild(dummy);
@@ -1096,9 +1055,9 @@
       document.execCommand("copy");
       document.body.removeChild(dummy);
       showToast("Chave PIX (99) 99158-3550 copiada com sucesso!");
-    }
+    };
 
-    function sendOrderWhatsApp() {
+    window.sendOrderWhatsApp = function() {
       const name = document.getElementById('cust-name').value.trim();
       const phone = document.getElementById('cust-phone').value.trim();
       const isClient = document.querySelector('input[name="cust-type"]:checked').value;
@@ -1161,22 +1120,22 @@
       window.cart = [];
       saveState();
       updateCartUI();
-    }
+    };
 
-    function openAdminPortal() {
+    window.openAdminPortal = function() {
       if (window.isAdminLoggedIn) {
         document.getElementById('admin-modal').classList.remove('hidden');
       } else {
         document.getElementById('admin-login-modal').classList.remove('hidden');
       }
-    }
+    };
 
-    function closeAdminLoginModal() {
+    window.closeAdminLoginModal = function() {
       document.getElementById('admin-login-modal').classList.add('hidden');
       document.getElementById('login-error-msg').classList.add('hidden');
-    }
+    };
 
-    function handleAdminLogin(e) {
+    window.handleAdminLogin = function(e) {
       e.preventDefault();
       const user = document.getElementById('login-user').value.trim();
       const pass = document.getElementById('login-pass').value.trim();
@@ -1191,19 +1150,19 @@
       } else {
         document.getElementById('login-error-msg').classList.remove('hidden');
       }
-    }
+    };
 
-    function handleAdminLogout() {
+    window.handleAdminLogout = function() {
       window.isAdminLoggedIn = false;
       closeAdminModal();
       showToast("Sessão encerrada com segurança.");
-    }
+    };
 
-    function closeAdminModal() {
+    window.closeAdminModal = function() {
       document.getElementById('admin-modal').classList.add('hidden');
-    }
+    };
 
-    function toggleAdminFormFields() {
+    window.toggleAdminFormFields = function() {
       const cat = document.getElementById('admin-prod-cat').value;
       const bottlesSec = document.getElementById('admin-bottles-section');
       const flavorsSec = document.getElementById('admin-flavors-section');
@@ -1215,9 +1174,9 @@
         bottlesSec.classList.remove('hidden');
         flavorsSec.classList.add('hidden');
       }
-    }
+    };
 
-    async function addCategory() {
+    window.addCategory = async function() {
       const input = document.getElementById('new-category-input');
       const catName = input.value.trim().toUpperCase();
 
@@ -1231,20 +1190,20 @@
         return;
       }
 
-      await window.dbOperations.addCategoryToFirebase(catName);
+      await setDoc(doc(db, "categories", catName), { name: catName });
       input.value = '';
       showToast(`Categoria "${catName}" criada com sucesso!`);
-    }
+    };
 
-    async function removeCategory(catName) {
+    window.removeCategory = async function(catName) {
       if (confirm(`Excluir a categoria "${catName}"?`)) {
-        await window.dbOperations.deleteCategoryFromFirebase(catName);
+        await deleteDoc(doc(db, "categories", catName));
         if (window.activeCategory === catName) window.activeCategory = 'all';
         showToast("Categoria removida.");
       }
-    }
+    };
 
-    function renderAdminCategories() {
+    window.renderAdminCategories = function() {
       const list = document.getElementById('admin-categories-list');
       list.innerHTML = window.categories.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1.5 rounded-2xl">
@@ -1252,17 +1211,17 @@
           <button onclick="removeCategory('${c}')" class="hover:text-red-600 ml-1 font-black text-sm">×</button>
         </span>
       `).join('');
-    }
+    };
 
-    function renderAdminCategoryOptions() {
+    window.renderAdminCategoryOptions = function() {
       const select = document.getElementById('admin-prod-cat');
       select.innerHTML = window.categories.map(c => `
         <option value="${c}">${c}</option>
       `).join('');
       toggleAdminFormFields();
-    }
+    };
 
-    function toggleGiftInput() {
+    window.toggleGiftInput = function() {
       const wrapper = document.getElementById('gift-input-wrapper');
       const btn = document.getElementById('btn-toggle-gift');
       if (wrapper.classList.contains('hidden')) {
@@ -1273,9 +1232,9 @@
         document.getElementById('admin-prod-gift').value = '';
         btn.innerText = "+ Adicionar Brinde";
       }
-    }
+    };
 
-    function handleFileUpload(input) {
+    window.handleFileUpload = function(input) {
       if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -1285,9 +1244,9 @@
         };
         reader.readAsDataURL(input.files[0]);
       }
-    }
+    };
 
-    async function saveProduct() {
+    window.saveProduct = async function() {
       const id = document.getElementById('admin-prod-id').value;
       const title = document.getElementById('admin-prod-title').value.trim();
       const category = document.getElementById('admin-prod-cat').value;
@@ -1302,9 +1261,6 @@
 
       const rawFlavorsOpt1 = document.getElementById('admin-flavors-opt1').value.trim();
       const rawFlavorsOpt2 = document.getElementById('admin-flavors-opt2').value.trim();
-
-      const defaultOpt1 = ["LIMÃO", "AMORA", "ABACAXI"];
-      const defaultOpt2 = ["LIMÃO", "MORANGO", "MANGA", "ABACAXI", "UVA", "AZUL ESPACIAL"];
 
       const flavorsOpt1 = rawFlavorsOpt1 ? rawFlavorsOpt1.split(',').map(s => s.trim().toUpperCase()).filter(Boolean) : defaultOpt1;
       const flavorsOpt2 = rawFlavorsOpt2 ? rawFlavorsOpt2.split(',').map(s => s.trim().toUpperCase()).filter(Boolean) : defaultOpt2;
@@ -1324,12 +1280,12 @@
         image: finalImg
       };
 
-      await window.dbOperations.saveProductToFirebase(prodData);
+      await setDoc(doc(db, "products", prodId), prodData);
       resetAdminForm();
-      showToast("Produto salvo com sucesso!");
-    }
+      showToast("Produto salvo no Firebase!");
+    };
 
-    function editProduct(id) {
+    window.editProduct = function(id) {
       const p = window.products.find(prod => prod.id === id);
       if (!p) return;
 
@@ -1366,16 +1322,16 @@
       }
 
       document.getElementById('admin-form-title').innerText = "Editar Produto";
-    }
+    };
 
-    async function deleteProduct(id) {
+    window.deleteProduct = async function(id) {
       if (confirm("Tem certeza que deseja excluir este produto?")) {
-        await window.dbOperations.deleteProductFromFirebase(id);
-        showToast("Produto excluído.");
+        await deleteDoc(doc(db, "products", id));
+        showToast("Produto excluído do Firebase!");
       }
-    }
+    };
 
-    function resetAdminForm() {
+    window.resetAdminForm = function() {
       document.getElementById('admin-prod-id').value = '';
       document.getElementById('admin-prod-title').value = '';
       document.getElementById('admin-prod-desc').value = '';
@@ -1395,9 +1351,9 @@
       document.getElementById('btn-toggle-gift').innerText = "+ Adicionar Brinde";
       document.getElementById('admin-form-title').innerText = "Cadastrar / Editar Produto";
       toggleAdminFormFields();
-    }
+    };
 
-    function renderAdminProducts() {
+    window.renderAdminProducts = function() {
       const list = document.getElementById('admin-products-list');
       list.innerHTML = window.products.map(p => {
         const bottlesText = formatBottlesString(p.g300 || 0, p.g500 || 0, p.g1l || 0);
@@ -1419,9 +1375,9 @@
           </div>
         `;
       }).join('');
-    }
+    };
 
-    function addCoupon() {
+    window.addCoupon = function() {
       const code = document.getElementById('new-coupon-code').value.trim().toUpperCase();
       const val = parseFloat(document.getElementById('new-coupon-val').value);
 
@@ -1436,15 +1392,15 @@
       document.getElementById('new-coupon-code').value = '';
       document.getElementById('new-coupon-val').value = '';
       showToast(`Cupom ${code} cadastrado!`);
-    }
+    };
 
-    function removeCoupon(code) {
+    window.removeCoupon = function(code) {
       window.coupons = window.coupons.filter(c => c.code !== code);
       saveState();
       renderCouponsList();
-    }
+    };
 
-    function renderCouponsList() {
+    window.renderCouponsList = function() {
       const list = document.getElementById('coupons-list');
       list.innerHTML = window.coupons.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1 rounded-full">
@@ -1452,9 +1408,9 @@
           <button onclick="removeCoupon('${c.code}')" class="hover:text-red-600 ml-1 font-bold">×</button>
         </span>
       `).join('');
-    }
+    };
 
-    function generatePDFMenu() {
+    window.generatePDFMenu = function() {
       showToast("Gerando PDF do Cardápio...");
 
       const pdfContainer = document.getElementById('pdf-template-container');
@@ -1522,7 +1478,15 @@
         pdfContainer.classList.add('hidden');
         showToast("Cardápio baixado com sucesso!");
       });
-    }
+    };
+
+    window.onload = function() {
+      lucide.createIcons();
+      initFirestoreData();
+      updateCartUI();
+      renderCouponsList();
+      toggleAdminFormFields();
+    };
   </script>
 </body>
 </html>
