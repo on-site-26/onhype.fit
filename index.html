@@ -63,7 +63,7 @@
 </head>
 <body class="min-h-screen pb-24 md:pb-12 text-slate-800">
 
-  <header class="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-sm glass-nav">
+  <header class="sticky top-0 z-35 bg-white border-b border-slate-100 shadow-sm glass-nav">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       
       <!-- LOGO OFICIAL ON HYPE FIT -->
@@ -104,7 +104,6 @@
         </button>
       </div>
 
-      <!-- Decorativo -->
       <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
     </div>
   </section>
@@ -138,7 +137,6 @@
 
   <div id="cart-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
     <div class="bg-white w-full max-w-xl h-full flex flex-col shadow-2xl overflow-hidden animate-slide-left">
-      
       <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
         <div class="flex items-center gap-2">
           <i data-lucide="shopping-bag" class="w-5 h-5 text-hype-purple"></i>
@@ -183,7 +181,6 @@
           Finalizar Compra <i data-lucide="check-circle" class="w-4 h-4"></i>
         </button>
       </div>
-
     </div>
   </div>
 
@@ -279,7 +276,6 @@
           <label class="block font-bold text-slate-700 text-xs">Precisa de troco para quanto?</label>
           <input type="text" id="cash-change-input" placeholder="Ex: R$ 50,00 ou Não preciso" class="w-full p-2 rounded-xl border border-slate-200 text-xs">
         </div>
-
       </div>
 
       <div class="p-4 border-t border-slate-100 bg-slate-50 flex gap-2">
@@ -288,7 +284,6 @@
           <i data-lucide="message-square" class="w-4 h-4"></i> Enviar Pedido.
         </button>
       </div>
-
     </div>
   </div>
 
@@ -330,7 +325,6 @@
 
   <div id="admin-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
-      
       <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
         <div class="flex items-center gap-2">
           <i data-lucide="settings" class="w-5 h-5 text-hype-green"></i>
@@ -350,7 +344,6 @@
       </div>
 
       <div class="p-5 overflow-y-auto space-y-6 flex-1 text-xs">
-        
         <!-- GERENCIAMENTO DE CATEGORIAS -->
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
           <h4 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
@@ -364,9 +357,7 @@
             </button>
           </div>
 
-          <div id="admin-categories-list" class="flex flex-wrap gap-2 pt-1">
-            <!-- Injetado via JS -->
-          </div>
+          <div id="admin-categories-list" class="flex flex-wrap gap-2 pt-1"></div>
         </div>
 
         <!-- FORMULARIO DE CADASTRO/EDIÇÃO -->
@@ -384,9 +375,7 @@
             </div>
             <div>
               <label class="block font-bold text-slate-700 mb-1">Categoria *</label>
-              <select id="admin-prod-cat" onchange="toggleAdminFormFields()" class="w-full p-2 rounded-xl border border-slate-200 outline-none font-semibold">
-                <!-- Opções Dinâmicas -->
-              </select>
+              <select id="admin-prod-cat" onchange="toggleAdminFormFields()" class="w-full p-2 rounded-xl border border-slate-200 outline-none font-semibold"></select>
             </div>
           </div>
 
@@ -438,7 +427,6 @@
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 1 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt1" placeholder="Ex: LIMÃO, AMORA, ABACAXI" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
               </div>
-
               <div class="bg-purple-50/60 p-3 rounded-2xl border border-purple-200">
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 2 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt2" placeholder="Ex: LIMÃO, MORANGO, MANGA, ABACAXI, UVA, AZUL ESPACIAL" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
@@ -490,9 +478,7 @@
           <h4 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
             <i data-lucide="list" class="w-4 h-4 text-hype-purple"></i> Produtos Cadastrados
           </h4>
-          <div id="admin-products-list" class="space-y-2 max-h-60 overflow-y-auto">
-            <!-- Injetado via JS -->
-          </div>
+          <div id="admin-products-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
         </div>
 
         <!-- GERENCIAMENTO DE CUPONS DE DESCONTO -->
@@ -509,11 +495,8 @@
             </button>
           </div>
 
-          <div id="coupons-list" class="flex flex-wrap gap-2 pt-1">
-            <!-- Injetado via JS -->
-          </div>
+          <div id="coupons-list" class="flex flex-wrap gap-2 pt-1"></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -576,7 +559,7 @@
     <span id="toast-message">Notificação</span>
   </div>
 
-  <!-- SCRIPT UNIFICADO COM FIREBASE (FIRESTORE) -->
+  <!-- SCRIPT COM FIREBASE (FIRESTORE) INTEGRADO -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -654,37 +637,44 @@
     window.isAdminLoggedIn = false;
     window.currentSelectedProductForFlavor = null;
 
-    // INICIALIZAÇÃO E SINCRONIZAÇÃO EM TEMPO REAL
+    // INICIALIZAÇÃO E POPULAÇÃO INICIAL NO FIRESTORE SE ESTIVER VAZIO
     async function initFirestoreData() {
-      const catSnapshot = await getDocs(collection(db, "categories"));
-      if (catSnapshot.empty) {
-        for (let cat of initialCategories) {
-          await setDoc(doc(db, "categories", cat), { name: cat });
+      try {
+        const catSnapshot = await getDocs(collection(db, "categories"));
+        if (catSnapshot.empty) {
+          for (let cat of initialCategories) {
+            await setDoc(doc(db, "categories", cat), { name: cat });
+          }
         }
-      }
 
-      const prodSnapshot = await getDocs(collection(db, "products"));
-      if (prodSnapshot.empty) {
-        for (let p of initialProducts) {
-          await setDoc(doc(db, "products", p.id), p);
+        const prodSnapshot = await getDocs(collection(db, "products"));
+        if (prodSnapshot.empty) {
+          for (let p of initialProducts) {
+            await setDoc(doc(db, "products", p.id), p);
+          }
         }
+
+        // Sincronização em Tempo Real (Categorias)
+        onSnapshot(collection(db, "categories"), (snapshot) => {
+          window.categories = snapshot.docs.map(doc => doc.id);
+          renderCategories();
+          renderAdminCategories();
+          renderAdminCategoryOptions();
+        });
+
+        // Sincronização em Tempo Real (Produtos)
+        onSnapshot(collection(db, "products"), (snapshot) => {
+          window.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          renderProducts();
+          renderAdminProducts();
+        });
+      } catch (error) {
+        console.error("Erro ao conectar com o Firebase. Verifique suas Regras de Segurança:", error);
+        showToast("Erro de conexão com o banco de dados online!");
       }
-
-      onSnapshot(collection(db, "categories"), (snapshot) => {
-        window.categories = snapshot.docs.map(doc => doc.id);
-        renderCategories();
-        renderAdminCategories();
-        renderAdminCategoryOptions();
-      });
-
-      onSnapshot(collection(db, "products"), (snapshot) => {
-        window.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        renderProducts();
-        renderAdminProducts();
-      });
     }
 
-    // EXPORTANDO FUNÇÕES PARA O WINDOW PARA O HTML ENCONTRAR
+    // EXPORTANDO TODAS AS FUNÇÕES PARA O ESCOPO GLOBAL DO WINDOW
     window.saveState = function() {
       localStorage.setItem('onhype_cart', JSON.stringify(window.cart));
       localStorage.setItem('onhype_coupons', JSON.stringify(window.coupons));
@@ -709,6 +699,7 @@
 
     window.renderCategories = function() {
       const container = document.getElementById('category-container');
+      if (!container) return;
       const allCats = ['all', ...window.categories];
 
       container.innerHTML = allCats.map(cat => {
@@ -738,6 +729,7 @@
 
     window.renderProducts = function() {
       const grid = document.getElementById('products-grid');
+      if (!grid) return;
       const filtered = window.activeCategory === 'all' 
         ? window.products 
         : window.products.filter(p => p.category === window.activeCategory);
@@ -878,8 +870,8 @@
       if (!prod) return;
 
       const cartItemId = selectedFlavors ? `${productId}-${selectedFlavors}` : productId;
-
       const existing = window.cart.find(item => item.cartItemId === cartItemId || (item.id === productId && !item.selectedFlavors && !selectedFlavors));
+      
       if (existing) {
         existing.qty += 1;
       } else {
@@ -1163,7 +1155,9 @@
     };
 
     window.toggleAdminFormFields = function() {
-      const cat = document.getElementById('admin-prod-cat').value;
+      const catSelect = document.getElementById('admin-prod-cat');
+      if (!catSelect) return;
+      const cat = catSelect.value;
       const bottlesSec = document.getElementById('admin-bottles-section');
       const flavorsSec = document.getElementById('admin-flavors-section');
 
@@ -1205,6 +1199,7 @@
 
     window.renderAdminCategories = function() {
       const list = document.getElementById('admin-categories-list');
+      if (!list) return;
       list.innerHTML = window.categories.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1.5 rounded-2xl">
           ${c}
@@ -1215,6 +1210,7 @@
 
     window.renderAdminCategoryOptions = function() {
       const select = document.getElementById('admin-prod-cat');
+      if (!select) return;
       select.innerHTML = window.categories.map(c => `
         <option value="${c}">${c}</option>
       `).join('');
@@ -1280,9 +1276,14 @@
         image: finalImg
       };
 
-      await setDoc(doc(db, "products", prodId), prodData);
-      resetAdminForm();
-      showToast("Produto salvo no Firebase!");
+      try {
+        await setDoc(doc(db, "products", prodId), prodData);
+        resetAdminForm();
+        showToast("Produto salvo no Firebase com sucesso!");
+      } catch (err) {
+        console.error("Erro ao salvar produto:", err);
+        showToast("Erro ao salvar! Verifique as Regras do Firestore.");
+      }
     };
 
     window.editProduct = function(id) {
@@ -1326,8 +1327,13 @@
 
     window.deleteProduct = async function(id) {
       if (confirm("Tem certeza que deseja excluir este produto?")) {
-        await deleteDoc(doc(db, "products", id));
-        showToast("Produto excluído do Firebase!");
+        try {
+          await deleteDoc(doc(db, "products", id));
+          showToast("Produto excluído do Firebase!");
+        } catch (err) {
+          console.error("Erro ao excluir produto:", err);
+          showToast("Erro ao excluir!");
+        }
       }
     };
 
@@ -1355,13 +1361,14 @@
 
     window.renderAdminProducts = function() {
       const list = document.getElementById('admin-products-list');
+      if (!list) return;
       list.innerHTML = window.products.map(p => {
         const bottlesText = formatBottlesString(p.g300 || 0, p.g500 || 0, p.g1l || 0);
 
         return `
           <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-slate-200 text-xs">
             <div class="flex items-center gap-3">
-              <img src="${p.image}" class="w-10 h-10 object-cover rounded-lg border">
+              <img src="${p.image}" class="w-10 h-10 object-cover rounded-lg border" onerror="this.src='https://placehold.co/100?text=FIT'">
               <div>
                 <div class="font-extrabold text-slate-800">${p.title}</div>
                 <div class="text-[10px] text-slate-500 font-semibold">${p.category} - R$ ${p.price.toFixed(2)}</div>
@@ -1402,6 +1409,7 @@
 
     window.renderCouponsList = function() {
       const list = document.getElementById('coupons-list');
+      if (!list) return;
       list.innerHTML = window.coupons.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1 rounded-full">
           ${c.code} (${c.discount}% OFF)
