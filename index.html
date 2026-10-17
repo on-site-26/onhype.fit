@@ -93,9 +93,9 @@
   <section class="max-w-6xl mx-auto px-3 sm:px-4 mt-4">
     <div class="bg-gradient-to-r from-hype-purple via-purple-600 to-indigo-700 rounded-3xl p-5 sm:p-6 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
       <div class="z-10 text-center md:text-left">
-        <span class="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Alimentação Saudável & Fitness</span>
-        <h1 class="text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight leading-snug">Combos Fit, Shakes & Hype Drinks</h1>
-        <p class="text-purple-100 text-xs sm:text-sm mt-1 max-w-lg">Sua rotina mais leve e saborosa com as melhores combinações nutricionais da ON HYPE FIT!</p>
+        <span class="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-2">+ Energia e Disposição</span>
+        <h1 class="text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight leading-snug">Combo Fit, Combo Fit+, Hype Drinks</h1>
+        <p class="text-purple-100 text-xs sm:text-sm mt-1 max-w-lg">Tenha uma rotina mais leve e com mais disposição como os produtos da ON HYPE FIT!</p>
       </div>
 
       <div class="z-10 flex gap-3 w-full sm:w-auto justify-center">
@@ -285,7 +285,7 @@
       <div class="p-4 border-t border-slate-100 bg-slate-50 flex gap-2">
         <button onclick="closeCheckoutModal()" class="w-1/3 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-2xl text-xs transition">Voltar</button>
         <button onclick="sendOrderWhatsApp()" class="w-2/3 bg-hype-green hover:bg-green-600 text-white font-black py-3 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-xs">
-          <i data-lucide="message-square" class="w-4 h-4"></i> Enviar Pedido no WhatsApp
+          <i data-lucide="message-square" class="w-4 h-4"></i> Enviar Pedido.
         </button>
       </div>
 
@@ -401,7 +401,7 @@
               <input type="number" step="0.01" id="admin-prod-price" placeholder="45.00" class="w-full p-2 rounded-xl border border-slate-200 outline-none">
             </div>
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Preço Antigo / Promoção (R$)</label>
+              <label class="block font-bold text-slate-700 mb-1">Valor da Promoção (R$)</label>
               <input type="number" step="0.01" id="admin-prod-oldprice" placeholder="55.00" class="w-full p-2 rounded-xl border border-slate-200 outline-none">
             </div>
           </div>
@@ -588,7 +588,7 @@
 
   <script>
     // DADOS INICIAIS
-    const initialCategories = ['COMBO FIT', 'COMBO FIT+', 'HYPE DRINK', 'SHAKES', 'OUTROS'];
+    const initialCategories = ['COMBO FIT', 'COMBO FIT+', 'HYPE DRINK'];
 
     const defaultOpt1 = ["LIMÃO", "AMORA", "ABACAXI"];
     const defaultOpt2 = ["LIMÃO", "MORANGO", "MANGA", "ABACAXI", "UVA", "AZUL ESPACIAL"];
@@ -1140,7 +1140,7 @@
       const user = document.getElementById('login-user').value.trim();
       const pass = document.getElementById('login-pass').value.trim();
 
-      if (user === 'admin' && pass === '123456') {
+      if (user === 'gabi' && pass === '123GC') {
         isAdminLoggedIn = true;
         closeAdminLoginModal();
         document.getElementById('admin-modal').classList.remove('hidden');
