@@ -63,7 +63,7 @@
 </head>
 <body class="min-h-screen pb-24 md:pb-12 text-slate-800">
 
-  <header class="sticky top-0 z-35 bg-white border-b border-slate-100 shadow-sm glass-nav">
+  <header class="sticky top-0 z-30 bg-white border-b border-slate-100 shadow-sm glass-nav">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       
       <!-- LOGO OFICIAL ON HYPE FIT -->
@@ -104,6 +104,7 @@
         </button>
       </div>
 
+      <!-- Decorativo -->
       <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
     </div>
   </section>
@@ -137,6 +138,7 @@
 
   <div id="cart-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex justify-end">
     <div class="bg-white w-full max-w-xl h-full flex flex-col shadow-2xl overflow-hidden animate-slide-left">
+      
       <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
         <div class="flex items-center gap-2">
           <i data-lucide="shopping-bag" class="w-5 h-5 text-hype-purple"></i>
@@ -181,6 +183,7 @@
           Finalizar Compra <i data-lucide="check-circle" class="w-4 h-4"></i>
         </button>
       </div>
+
     </div>
   </div>
 
@@ -276,6 +279,7 @@
           <label class="block font-bold text-slate-700 text-xs">Precisa de troco para quanto?</label>
           <input type="text" id="cash-change-input" placeholder="Ex: R$ 50,00 ou Não preciso" class="w-full p-2 rounded-xl border border-slate-200 text-xs">
         </div>
+
       </div>
 
       <div class="p-4 border-t border-slate-100 bg-slate-50 flex gap-2">
@@ -284,6 +288,7 @@
           <i data-lucide="message-square" class="w-4 h-4"></i> Enviar Pedido.
         </button>
       </div>
+
     </div>
   </div>
 
@@ -325,6 +330,7 @@
 
   <div id="admin-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+      
       <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
         <div class="flex items-center gap-2">
           <i data-lucide="settings" class="w-5 h-5 text-hype-green"></i>
@@ -344,6 +350,7 @@
       </div>
 
       <div class="p-5 overflow-y-auto space-y-6 flex-1 text-xs">
+        
         <!-- GERENCIAMENTO DE CATEGORIAS -->
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
           <h4 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
@@ -357,7 +364,9 @@
             </button>
           </div>
 
-          <div id="admin-categories-list" class="flex flex-wrap gap-2 pt-1"></div>
+          <div id="admin-categories-list" class="flex flex-wrap gap-2 pt-1">
+            <!-- Injetado via JS -->
+          </div>
         </div>
 
         <!-- FORMULARIO DE CADASTRO/EDIÇÃO -->
@@ -375,7 +384,9 @@
             </div>
             <div>
               <label class="block font-bold text-slate-700 mb-1">Categoria *</label>
-              <select id="admin-prod-cat" onchange="toggleAdminFormFields()" class="w-full p-2 rounded-xl border border-slate-200 outline-none font-semibold"></select>
+              <select id="admin-prod-cat" onchange="toggleAdminFormFields()" class="w-full p-2 rounded-xl border border-slate-200 outline-none font-semibold">
+                <!-- Opções Dinâmicas -->
+              </select>
             </div>
           </div>
 
@@ -395,7 +406,7 @@
             </div>
           </div>
 
-          <!-- COMPOSIÇÃO DE GARRAFAS -->
+          <!-- COMPOSIÇÃO DE GARRAFAS (Para Combos e outras categorias) -->
           <div id="admin-bottles-section" class="border-t border-slate-200 pt-3">
             <label class="block font-bold text-slate-800 mb-2 flex items-center gap-1">
               <i data-lucide="milk" class="w-4 h-4 text-hype-purple"></i> Quantidade de Garrafas no Combo
@@ -416,7 +427,7 @@
             </div>
           </div>
 
-          <!-- CONFIGURAÇÃO DE SABORES -->
+          <!-- CONFIGURAÇÃO DE SABORES (Visível apenas para HYPE DRINK) -->
           <div id="admin-flavors-section" class="border-t border-slate-200 pt-3 hidden space-y-3">
             <label class="block font-bold text-slate-800 flex items-center gap-1">
               <i data-lucide="cup-soda" class="w-4 h-4 text-hype-purple"></i> Configuração de Sabores do Hype Drink
@@ -426,10 +437,13 @@
               <div class="bg-purple-50/60 p-3 rounded-2xl border border-purple-200">
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 1 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt1" placeholder="Ex: LIMÃO, AMORA, ABACAXI" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
+                <span class="text-[10px] text-slate-500 mt-1 block">Exibidos na primeira seleção de sabor.</span>
               </div>
+
               <div class="bg-purple-50/60 p-3 rounded-2xl border border-purple-200">
                 <label class="block font-bold text-slate-700 text-[11px] mb-1">Sabores Opção 2 (separados por vírgula)</label>
                 <input type="text" id="admin-flavors-opt2" placeholder="Ex: LIMÃO, MORANGO, MANGA, ABACAXI, UVA, AZUL ESPACIAL" class="w-full p-2 rounded-xl border border-slate-200 outline-none text-xs">
+                <span class="text-[10px] text-slate-500 mt-1 block">Exibidos na segunda seleção (se não for apenas 1 sabor).</span>
               </div>
             </div>
           </div>
@@ -473,12 +487,14 @@
           </div>
         </div>
 
-        <!-- LISTA DE PRODUTOS CADASTRADOS -->
+        <!-- LISTA DE PRODUTOS CADASTRADOS NO ADMIN -->
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
           <h4 class="font-extrabold text-slate-800 text-sm flex items-center gap-1.5">
             <i data-lucide="list" class="w-4 h-4 text-hype-purple"></i> Produtos Cadastrados
           </h4>
-          <div id="admin-products-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
+          <div id="admin-products-list" class="space-y-2 max-h-60 overflow-y-auto">
+            <!-- Injetado via JS -->
+          </div>
         </div>
 
         <!-- GERENCIAMENTO DE CUPONS DE DESCONTO -->
@@ -495,8 +511,11 @@
             </button>
           </div>
 
-          <div id="coupons-list" class="flex flex-wrap gap-2 pt-1"></div>
+          <div id="coupons-list" class="flex flex-wrap gap-2 pt-1">
+            <!-- Injetado via JS -->
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -526,20 +545,26 @@
           </label>
         </div>
 
+        <!-- OPÇÃO 1 -->
         <div id="box-flavor-opt1" class="space-y-1.5">
           <label class="block font-extrabold text-slate-800 text-xs flex items-center gap-1">
             <span class="w-5 h-5 rounded-full bg-hype-purple text-white inline-flex items-center justify-center text-[10px]">1</span>
             Escolha o Sabor 1 *
           </label>
-          <select id="select-flavor-1" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50"></select>
+          <select id="select-flavor-1" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50">
+            <!-- Opções dinâmicas -->
+          </select>
         </div>
 
+        <!-- OPÇÃO 2 -->
         <div id="box-flavor-opt2" class="space-y-1.5 transition-all">
           <label class="block font-extrabold text-slate-800 text-xs flex items-center gap-1">
             <span class="w-5 h-5 rounded-full bg-hype-purple text-white inline-flex items-center justify-center text-[10px]">2</span>
             Escolha o Sabor 2 *
           </label>
-          <select id="select-flavor-2" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50"></select>
+          <select id="select-flavor-2" class="w-full p-3 rounded-2xl border border-slate-200 font-bold text-slate-700 focus:ring-2 focus:ring-hype-purple outline-none bg-slate-50">
+            <!-- Opções dinâmicas -->
+          </select>
         </div>
       </div>
 
@@ -552,22 +577,25 @@
     </div>
   </div>
 
+  <!-- CONTAINER DE TEMPLATE PDF (OCULTO) -->
   <div id="pdf-template-container" class="hidden"></div>
 
+  <!-- NOTIFICAÇÃO TOAST -->
   <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl z-50 transform transition-all duration-300 translate-y-24 opacity-0 flex items-center gap-2 text-xs font-bold border border-slate-700">
     <i data-lucide="check-circle-2" class="w-4 h-4 text-hype-green"></i>
     <span id="toast-message">Notificação</span>
   </div>
 
-  <!-- SCRIPT COM FIREBASE (FIRESTORE) INTEGRADO -->
+  <!-- CONFIGURAÇÃO DO FIREBASE E SCRIPT PRINCIPAL -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-    import { getFirestore, collection, onSnapshot, doc, setDoc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
+    import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyB9m6hv4dyIwZs6Ap84c-itm44H872_AS0",
       authDomain: "dados-loja-on-hype-fit.firebaseapp.com",
+      databaseURL: "https://dados-loja-on-hype-fit-default-rtdb.firebaseio.com",
       projectId: "dados-loja-on-hype-fit",
       storageBucket: "dados-loja-on-hype-fit.firebasestorage.app",
       messagingSenderId: "985641243693",
@@ -575,14 +603,16 @@
       measurementId: "G-YRJVGHKB4F"
     };
 
+    // Inicialização do Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-    const db = getFirestore(app);
+    const db = getDatabase(app);
 
+    // DADOS INICIAIS DE BACKUP
+    const initialCategories = ['COMBO FIT', 'COMBO FIT+', 'HYPE DRINK'];
     const defaultOpt1 = ["LIMÃO", "AMORA", "ABACAXI"];
     const defaultOpt2 = ["LIMÃO", "MORANGO", "MANGA", "ABACAXI", "UVA", "AZUL ESPACIAL"];
 
-    const initialCategories = ['COMBO FIT', 'COMBO FIT+', 'HYPE DRINK'];
     const initialProducts = [
       {
         id: "prod-1",
@@ -627,84 +657,97 @@
       }
     ];
 
-    window.categories = [];
-    window.products = [];
-    window.cart = JSON.parse(localStorage.getItem('onhype_cart')) || [];
-    window.coupons = JSON.parse(localStorage.getItem('onhype_coupons')) || [{ code: 'HYPE10', discount: 10 }];
-    window.activeCategory = 'all';
-    window.appliedCoupon = null;
-    window.uploadedBase64Image = '';
-    window.isAdminLoggedIn = false;
-    window.currentSelectedProductForFlavor = null;
+    const initialCoupons = [
+      { code: 'HYPE10', discount: 10 }
+    ];
 
-    // INICIALIZAÇÃO E POPULAÇÃO INICIAL NO FIRESTORE SE ESTIVER VAZIO
-    async function initFirestoreData() {
-      try {
-        const catSnapshot = await getDocs(collection(db, "categories"));
-        if (catSnapshot.empty) {
-          for (let cat of initialCategories) {
-            await setDoc(doc(db, "categories", cat), { name: cat });
-          }
-        }
+    // ESTADOS DA APLICAÇÃO
+    let categories = [];
+    let products = [];
+    let coupons = [];
+    let cart = JSON.parse(localStorage.getItem('onhype_cart')) || [];
+    let activeCategory = 'all';
+    let appliedCoupon = null;
+    let uploadedBase64Image = '';
+    let isAdminLoggedIn = false;
+    let currentSelectedProductForFlavor = null;
 
-        const prodSnapshot = await getDocs(collection(db, "products"));
-        if (prodSnapshot.empty) {
-          for (let p of initialProducts) {
-            await setDoc(doc(db, "products", p.id), p);
-          }
-        }
-
-        // Sincronização em Tempo Real (Categorias)
-        onSnapshot(collection(db, "categories"), (snapshot) => {
-          window.categories = snapshot.docs.map(doc => doc.id);
-          renderCategories();
-          renderAdminCategories();
-          renderAdminCategoryOptions();
+    // ESCUTADORES EM TEMPO REAL DO FIREBASE
+    onValue(ref(db, 'products'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        products = Object.keys(data).map(key => ({ ...data[key], id: key }));
+      } else {
+        products = [];
+        // Se estiver vazio no banco, insere os iniciais
+        initialProducts.forEach(p => {
+          set(ref(db, 'products/' + p.id), p);
         });
-
-        // Sincronização em Tempo Real (Produtos)
-        onSnapshot(collection(db, "products"), (snapshot) => {
-          window.products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          renderProducts();
-          renderAdminProducts();
-        });
-      } catch (error) {
-        console.error("Erro ao conectar com o Firebase. Verifique suas Regras de Segurança:", error);
-        showToast("Erro de conexão com o banco de dados online!");
       }
+      renderProducts();
+      renderAdminProducts();
+    });
+
+    onValue(ref(db, 'categories'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        categories = Array.isArray(data) ? data : Object.values(data);
+      } else {
+        categories = initialCategories;
+        set(ref(db, 'categories'), initialCategories);
+      }
+      renderCategories();
+      renderAdminCategories();
+      renderAdminCategoryOptions();
+    });
+
+    onValue(ref(db, 'coupons'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        coupons = Array.isArray(data) ? data : Object.values(data);
+      } else {
+        coupons = initialCoupons;
+        set(ref(db, 'coupons'), initialCoupons);
+      }
+      renderCouponsList();
+    });
+
+    // INICIALIZAÇÃO LOCAL (UI)
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      updateCartUI();
+      toggleAdminFormFields();
+    });
+
+    function saveCartState() {
+      localStorage.setItem('onhype_cart', JSON.stringify(cart));
     }
 
-    // EXPORTANDO TODAS AS FUNÇÕES PARA O ESCOPO GLOBAL DO WINDOW
-    window.saveState = function() {
-      localStorage.setItem('onhype_cart', JSON.stringify(window.cart));
-      localStorage.setItem('onhype_coupons', JSON.stringify(window.coupons));
-    };
-
-    window.showToast = function(msg) {
+    function showToast(msg) {
       const toast = document.getElementById('toast');
       document.getElementById('toast-message').innerText = msg;
       toast.classList.remove('translate-y-24', 'opacity-0');
       setTimeout(() => {
         toast.classList.add('translate-y-24', 'opacity-0');
       }, 3000);
-    };
+    }
 
-    window.formatBottlesString = function(g300, g500, g1l) {
+    function formatBottlesString(g300, g500, g1l) {
       const parts = [];
       if (g300 > 0) parts.push(`${g300} ${g300 === 1 ? 'garrafa' : 'garrafas'} de 300ml`);
       if (g500 > 0) parts.push(`${g500} ${g500 === 1 ? 'garrafa' : 'garrafas'} de 500ml`);
       if (g1l > 0) parts.push(`${g1l} ${g1l === 1 ? 'garrafa' : 'garrafas'} de 1 Litro`);
       return parts.length > 0 ? `Contém: ${parts.join(' | ')}` : '';
-    };
+    }
 
-    window.renderCategories = function() {
+    // RENDERIZAR CATEGORIAS
+    function renderCategories() {
       const container = document.getElementById('category-container');
-      if (!container) return;
-      const allCats = ['all', ...window.categories];
+      const allCats = ['all', ...categories];
 
       container.innerHTML = allCats.map(cat => {
         const label = cat === 'all' ? 'Todos os Produtos' : cat;
-        const isActive = window.activeCategory === cat;
+        const isActive = activeCategory === cat;
         return `
           <button onclick="switchCategory('${cat}')" class="px-5 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
             isActive ? 'bg-hype-purple text-white shadow-md shadow-purple-200' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
@@ -715,10 +758,10 @@
         `;
       }).join('');
       lucide.createIcons();
-    };
+    }
 
     window.switchCategory = function(cat) {
-      window.activeCategory = cat;
+      activeCategory = cat;
       renderCategories();
       renderProducts();
     };
@@ -727,12 +770,12 @@
       document.getElementById('products-grid').scrollIntoView({ behavior: 'smooth' });
     };
 
-    window.renderProducts = function() {
+    // RENDERIZAR PRODUTOS LOJA
+    function renderProducts() {
       const grid = document.getElementById('products-grid');
-      if (!grid) return;
-      const filtered = window.activeCategory === 'all' 
-        ? window.products 
-        : window.products.filter(p => p.category === window.activeCategory);
+      const filtered = activeCategory === 'all' 
+        ? products 
+        : products.filter(p => p.category === activeCategory);
 
       if (filtered.length === 0) {
         grid.innerHTML = `
@@ -750,13 +793,16 @@
 
         return `
           <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+            
             <div class="relative h-48 bg-slate-100 overflow-hidden">
               <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/7C3AED/ffffff?text=ON+HYPE+FIT'">
+              
               <div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
                 <span class="bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
                   ${p.category}
                 </span>
               </div>
+
               ${p.oldPrice > p.price ? `
                 <span class="absolute top-3 right-3 bg-red-500 text-white font-black text-[10px] px-2.5 py-1 rounded-full shadow-sm">
                   OFERTA
@@ -768,6 +814,7 @@
               <div>
                 <h3 class="font-extrabold text-slate-800 text-base leading-snug group-hover:text-hype-purple transition-colors">${p.title}</h3>
                 <p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.description}</p>
+                
                 ${bottlesText ? `
                   <div class="mt-2 text-[11px] font-bold text-hype-purple bg-purple-50 px-2.5 py-1 rounded-xl inline-block border border-purple-100">
                     ${bottlesText}
@@ -797,15 +844,17 @@
                   QUERO ESSE
                 </button>
               </div>
+
             </div>
           </div>
         `;
       }).join('');
       lucide.createIcons();
-    };
+    }
 
+    // CLIQUE EM "QUERO ESSE"
     window.handleAddToCartClick = function(productId) {
-      const prod = window.products.find(p => p.id === productId);
+      const prod = products.find(p => p.id === productId);
       if (!prod) return;
 
       if (prod.category === 'HYPE DRINK') {
@@ -815,27 +864,31 @@
       }
     };
 
-    window.openFlavorModal = function(product) {
-      window.currentSelectedProductForFlavor = product;
+    // ABRIR POP-UP DE SELEÇÃO DE SABORES
+    function openFlavorModal(product) {
+      currentSelectedProductForFlavor = product;
       document.getElementById('flavor-prod-title').innerText = product.title;
       document.getElementById('flavor-prod-price').innerText = `R$ ${product.price.toFixed(2)}`;
 
       const opt1 = (product.flavorsOpt1 && product.flavorsOpt1.length > 0) ? product.flavorsOpt1 : defaultOpt1;
       const opt2 = (product.flavorsOpt2 && product.flavorsOpt2.length > 0) ? product.flavorsOpt2 : defaultOpt2;
 
-      document.getElementById('select-flavor-1').innerHTML = opt1.map(f => `<option value="${f}">${f}</option>`).join('');
-      document.getElementById('select-flavor-2').innerHTML = opt2.map(f => `<option value="${f}">${f}</option>`).join('');
+      const sel1 = document.getElementById('select-flavor-1');
+      sel1.innerHTML = opt1.map(f => `<option value="${f}">${f}</option>`).join('');
+
+      const sel2 = document.getElementById('select-flavor-2');
+      sel2.innerHTML = opt2.map(f => `<option value="${f}">${f}</option>`).join('');
 
       document.getElementById('single-flavor-check').checked = false;
       toggleSingleFlavorMode();
 
       document.getElementById('flavor-modal').classList.remove('hidden');
       lucide.createIcons();
-    };
+    }
 
     window.closeFlavorModal = function() {
       document.getElementById('flavor-modal').classList.add('hidden');
-      window.currentSelectedProductForFlavor = null;
+      currentSelectedProductForFlavor = null;
     };
 
     window.toggleSingleFlavorMode = function() {
@@ -853,29 +906,35 @@
     };
 
     window.confirmFlavorAndAddToCart = function() {
-      if (!window.currentSelectedProductForFlavor) return;
+      if (!currentSelectedProductForFlavor) return;
 
       const isSingle = document.getElementById('single-flavor-check').checked;
       const f1 = document.getElementById('select-flavor-1').value;
       const f2 = document.getElementById('select-flavor-2').value;
 
-      let selectedFlavorsText = isSingle ? `1 Sabor: ${f1}` : `Mistura: ${f1} + ${f2}`;
+      let selectedFlavorsText = "";
+      if (isSingle) {
+        selectedFlavorsText = `1 Sabor: ${f1}`;
+      } else {
+        selectedFlavorsText = `Mistura: ${f1} + ${f2}`;
+      }
 
-      addToCart(window.currentSelectedProductForFlavor.id, selectedFlavorsText);
+      addToCart(currentSelectedProductForFlavor.id, selectedFlavorsText);
       closeFlavorModal();
     };
 
-    window.addToCart = function(productId, selectedFlavors) {
-      const prod = window.products.find(p => p.id === productId);
+    // CARRINHO DE COMPRAS
+    function addToCart(productId, selectedFlavors) {
+      const prod = products.find(p => p.id === productId);
       if (!prod) return;
 
       const cartItemId = selectedFlavors ? `${productId}-${selectedFlavors}` : productId;
-      const existing = window.cart.find(item => item.cartItemId === cartItemId || (item.id === productId && !item.selectedFlavors && !selectedFlavors));
-      
+
+      const existing = cart.find(item => item.cartItemId === cartItemId || (item.id === productId && !item.selectedFlavors && !selectedFlavors));
       if (existing) {
         existing.qty += 1;
       } else {
-        window.cart.push({ 
+        cart.push({ 
           ...prod, 
           cartItemId: cartItemId,
           selectedFlavors: selectedFlavors || null,
@@ -883,33 +942,33 @@
         });
       }
 
-      saveState();
+      saveCartState();
       updateCartUI();
       openCartModal();
-    };
+    }
 
     window.changeQty = function(cartItemId, delta) {
-      const item = window.cart.find(i => (i.cartItemId || i.id) === cartItemId);
+      const item = cart.find(i => (i.cartItemId || i.id) === cartItemId);
       if (!item) return;
 
       item.qty += delta;
       if (item.qty <= 0) {
-        window.cart = window.cart.filter(i => (i.cartItemId || i.id) !== cartItemId);
+        cart = cart.filter(i => (i.cartItemId || i.id) !== cartItemId);
       }
 
-      saveState();
+      saveCartState();
       updateCartUI();
     };
 
     window.removeFromCart = function(cartItemId) {
-      window.cart = window.cart.filter(i => (i.cartItemId || i.id) !== cartItemId);
-      saveState();
+      cart = cart.filter(i => (i.cartItemId || i.id) !== cartItemId);
+      saveCartState();
       updateCartUI();
     };
 
-    window.updateCartUI = function() {
-      const totalCount = window.cart.reduce((sum, item) => sum + item.qty, 0);
-      const subtotal = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    function updateCartUI() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
       document.getElementById('cart-badge-count').innerText = totalCount;
       document.getElementById('float-cart-count').innerText = totalCount;
@@ -920,7 +979,7 @@
       else floatBar.classList.add('translate-y-32');
 
       const modalBody = document.getElementById('cart-modal-body');
-      if (window.cart.length === 0) {
+      if (cart.length === 0) {
         modalBody.innerHTML = `
           <div class="text-center py-12 text-slate-400 space-y-3">
             <i data-lucide="shopping-bag" class="w-16 h-16 mx-auto stroke-1 text-slate-300"></i>
@@ -929,7 +988,7 @@
           </div>
         `;
       } else {
-        modalBody.innerHTML = window.cart.map(item => {
+        modalBody.innerHTML = cart.map(item => {
           const bottlesText = formatBottlesString(item.g300 || 0, item.g500 || 0, item.g1l || 0);
           const itemIdKey = item.cartItemId || item.id;
 
@@ -959,22 +1018,22 @@
       }
 
       let discountVal = 0;
-      if (window.appliedCoupon) {
-        discountVal = (subtotal * window.appliedCoupon.discount) / 100;
+      if (appliedCoupon) {
+        discountVal = (subtotal * appliedCoupon.discount) / 100;
       }
       const finalTotal = Math.max(0, subtotal - discountVal);
 
       document.getElementById('summary-subtotal').innerText = `R$ ${subtotal.toFixed(2)}`;
-      if (window.appliedCoupon) {
+      if (appliedCoupon) {
         document.getElementById('summary-discount-row').classList.remove('hidden');
-        document.getElementById('summary-discount').innerText = `-R$ ${discountVal.toFixed(2)} (${window.appliedCoupon.discount}%)`;
+        document.getElementById('summary-discount').innerText = `-R$ ${discountVal.toFixed(2)} (${appliedCoupon.discount}%)`;
       } else {
         document.getElementById('summary-discount-row').classList.add('hidden');
       }
       document.getElementById('summary-total').innerText = `R$ ${finalTotal.toFixed(2)}`;
 
       lucide.createIcons();
-    };
+    }
 
     window.openCartModal = function() {
       document.getElementById('cart-modal').classList.remove('hidden');
@@ -989,9 +1048,9 @@
       const code = document.getElementById('coupon-input').value.trim().toUpperCase();
       const msgDiv = document.getElementById('coupon-message');
 
-      const found = window.coupons.find(c => c.code === code);
+      const found = coupons.find(c => c.code === code);
       if (found) {
-        window.appliedCoupon = found;
+        appliedCoupon = found;
         msgDiv.className = "text-xs font-bold text-center text-hype-green mt-1";
         msgDiv.innerText = `Cupom "${code}" aplicado com sucesso! (${found.discount}% OFF)`;
         updateCartUI();
@@ -1001,8 +1060,9 @@
       }
     };
 
+    // CHECKOUT & WHATSAPP
     window.showCheckoutForm = function() {
-      if (window.cart.length === 0) {
+      if (cart.length === 0) {
         showToast("Adicione produtos ao carrinho antes!");
         return;
       }
@@ -1065,10 +1125,10 @@
         return;
       }
 
-      const subtotal = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       let discountVal = 0;
-      if (window.appliedCoupon) {
-        discountVal = (subtotal * window.appliedCoupon.discount) / 100;
+      if (appliedCoupon) {
+        discountVal = (subtotal * appliedCoupon.discount) / 100;
       }
       const total = Math.max(0, subtotal - discountVal);
 
@@ -1083,7 +1143,7 @@
       if (comp) text += `Complemento: ${comp}\n`;
 
       text += `\n*ITENS DO PEDIDO:*\n`;
-      window.cart.forEach((item, index) => {
+      cart.forEach((item, index) => {
         const bottlesText = formatBottlesString(item.g300 || 0, item.g500 || 0, item.g1l || 0);
         text += `${index + 1}. ${item.qty}x *${item.title}* - R$ ${(item.price * item.qty).toFixed(2)}\n`;
         if (item.selectedFlavors) text += `   🥤 _Sabores Escolhidos: ${item.selectedFlavors}_\n`;
@@ -1093,8 +1153,8 @@
 
       text += `\n*RESUMO DE VALORES:*\n`;
       text += `Subtotal: R$ ${subtotal.toFixed(2)}\n`;
-      if (window.appliedCoupon) {
-        text += `Cupom (${window.appliedCoupon.code}): -R$ ${discountVal.toFixed(2)}\n`;
+      if (appliedCoupon) {
+        text += `Cupom (${appliedCoupon.code}): -R$ ${discountVal.toFixed(2)}\n`;
       }
       text += `*Total Final: R$ ${total.toFixed(2)}*\n\n`;
 
@@ -1109,13 +1169,14 @@
 
       window.open(url, '_blank');
       closeCheckoutModal();
-      window.cart = [];
-      saveState();
+      cart = [];
+      saveCartState();
       updateCartUI();
     };
 
+    // AUTENTICAÇÃO E MODAL ADMIN
     window.openAdminPortal = function() {
-      if (window.isAdminLoggedIn) {
+      if (isAdminLoggedIn) {
         document.getElementById('admin-modal').classList.remove('hidden');
       } else {
         document.getElementById('admin-login-modal').classList.remove('hidden');
@@ -1133,7 +1194,7 @@
       const pass = document.getElementById('login-pass').value.trim();
 
       if (user === 'gabi' && pass === '123GC') {
-        window.isAdminLoggedIn = true;
+        isAdminLoggedIn = true;
         closeAdminLoginModal();
         document.getElementById('admin-modal').classList.remove('hidden');
         document.getElementById('login-user').value = '';
@@ -1145,7 +1206,7 @@
     };
 
     window.handleAdminLogout = function() {
-      window.isAdminLoggedIn = false;
+      isAdminLoggedIn = false;
       closeAdminModal();
       showToast("Sessão encerrada com segurança.");
     };
@@ -1154,10 +1215,9 @@
       document.getElementById('admin-modal').classList.add('hidden');
     };
 
+    // ADAPTAR FORMULARIO DO ADMIN DE ACORDO COM A CATEGORIA
     window.toggleAdminFormFields = function() {
-      const catSelect = document.getElementById('admin-prod-cat');
-      if (!catSelect) return;
-      const cat = catSelect.value;
+      const cat = document.getElementById('admin-prod-cat').value;
       const bottlesSec = document.getElementById('admin-bottles-section');
       const flavorsSec = document.getElementById('admin-flavors-section');
 
@@ -1170,7 +1230,8 @@
       }
     };
 
-    window.addCategory = async function() {
+    // GESTÃO DE CATEGORIAS
+    window.addCategory = function() {
       const input = document.getElementById('new-category-input');
       const catName = input.value.trim().toUpperCase();
 
@@ -1179,44 +1240,47 @@
         return;
       }
 
-      if (window.categories.includes(catName)) {
+      if (categories.includes(catName)) {
         showToast("Esta categoria já existe!");
         return;
       }
 
-      await setDoc(doc(db, "categories", catName), { name: catName });
-      input.value = '';
-      showToast(`Categoria "${catName}" criada com sucesso!`);
+      const updatedCategories = [...categories, catName];
+      set(ref(db, 'categories'), updatedCategories).then(() => {
+        input.value = '';
+        showToast(`Categoria "${catName}" criada com sucesso!`);
+      });
     };
 
-    window.removeCategory = async function(catName) {
+    window.removeCategory = function(catName) {
       if (confirm(`Excluir a categoria "${catName}"?`)) {
-        await deleteDoc(doc(db, "categories", catName));
-        if (window.activeCategory === catName) window.activeCategory = 'all';
-        showToast("Categoria removida.");
+        const updatedCategories = categories.filter(c => c !== catName);
+        if (activeCategory === catName) activeCategory = 'all';
+        set(ref(db, 'categories'), updatedCategories).then(() => {
+          showToast("Categoria removida.");
+        });
       }
     };
 
-    window.renderAdminCategories = function() {
+    function renderAdminCategories() {
       const list = document.getElementById('admin-categories-list');
-      if (!list) return;
-      list.innerHTML = window.categories.map(c => `
+      list.innerHTML = categories.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1.5 rounded-2xl">
           ${c}
           <button onclick="removeCategory('${c}')" class="hover:text-red-600 ml-1 font-black text-sm">×</button>
         </span>
       `).join('');
-    };
+    }
 
-    window.renderAdminCategoryOptions = function() {
+    function renderAdminCategoryOptions() {
       const select = document.getElementById('admin-prod-cat');
-      if (!select) return;
-      select.innerHTML = window.categories.map(c => `
+      select.innerHTML = categories.map(c => `
         <option value="${c}">${c}</option>
       `).join('');
       toggleAdminFormFields();
-    };
+    }
 
+    // GESTÃO DE PRODUTOS
     window.toggleGiftInput = function() {
       const wrapper = document.getElementById('gift-input-wrapper');
       const btn = document.getElementById('btn-toggle-gift');
@@ -1234,15 +1298,15 @@
       if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
-          window.uploadedBase64Image = e.target.result;
-          document.getElementById('admin-prod-img-preview').src = window.uploadedBase64Image;
+          uploadedBase64Image = e.target.result;
+          document.getElementById('admin-prod-img-preview').src = uploadedBase64Image;
           document.getElementById('img-preview-container').classList.remove('hidden');
         };
         reader.readAsDataURL(input.files[0]);
       }
     };
 
-    window.saveProduct = async function() {
+    window.saveProduct = function() {
       const id = document.getElementById('admin-prod-id').value;
       const title = document.getElementById('admin-prod-title').value.trim();
       const category = document.getElementById('admin-prod-cat').value;
@@ -1266,28 +1330,34 @@
         return;
       }
 
-      let finalImg = window.uploadedBase64Image || urlImg || 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&q=80';
+      let finalImg = uploadedBase64Image || urlImg || 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=600&q=80';
 
       const prodId = id || ('prod-' + Date.now());
-      const prodData = {
+
+      const productData = {
         id: prodId,
-        title, category, description, price, oldPrice, g300, g500, g1l, gift,
-        flavorsOpt1, flavorsOpt2,
+        title,
+        category,
+        description,
+        price,
+        oldPrice,
+        g300,
+        g500,
+        g1l,
+        gift,
+        flavorsOpt1,
+        flavorsOpt2,
         image: finalImg
       };
 
-      try {
-        await setDoc(doc(db, "products", prodId), prodData);
+      set(ref(db, 'products/' + prodId), productData).then(() => {
         resetAdminForm();
-        showToast("Produto salvo no Firebase com sucesso!");
-      } catch (err) {
-        console.error("Erro ao salvar produto:", err);
-        showToast("Erro ao salvar! Verifique as Regras do Firestore.");
-      }
+        showToast("Produto salvo com sucesso no banco de dados!");
+      });
     };
 
     window.editProduct = function(id) {
-      const p = window.products.find(prod => prod.id === id);
+      const p = products.find(prod => prod.id === id);
       if (!p) return;
 
       document.getElementById('admin-prod-id').value = p.id;
@@ -1302,8 +1372,8 @@
       document.getElementById('admin-prod-g500').value = p.g500 || '';
       document.getElementById('admin-prod-g1l').value = p.g1l || '';
       
-      document.getElementById('admin-flavors-opt1').value = (p.flavorsOpt1 || []).join(', ');
-      document.getElementById('admin-flavors-opt2').value = (p.flavorsOpt2 || []).join(', ');
+      document.getElementById('admin-flavors-opt1').value = (p.flavorsOpt1 || defaultOpt1).join(', ');
+      document.getElementById('admin-flavors-opt2').value = (p.flavorsOpt2 || defaultOpt2).join(', ');
 
       document.getElementById('admin-prod-imgurl').value = p.image.startsWith('data:') ? '' : p.image;
       
@@ -1325,15 +1395,11 @@
       document.getElementById('admin-form-title').innerText = "Editar Produto";
     };
 
-    window.deleteProduct = async function(id) {
+    window.deleteProduct = function(id) {
       if (confirm("Tem certeza que deseja excluir este produto?")) {
-        try {
-          await deleteDoc(doc(db, "products", id));
-          showToast("Produto excluído do Firebase!");
-        } catch (err) {
-          console.error("Erro ao excluir produto:", err);
-          showToast("Erro ao excluir!");
-        }
+        remove(ref(db, 'products/' + id)).then(() => {
+          showToast("Produto excluído do banco de dados.");
+        });
       }
     };
 
@@ -1351,7 +1417,7 @@
       document.getElementById('admin-prod-imgurl').value = '';
       document.getElementById('admin-prod-file').value = '';
       document.getElementById('admin-prod-gift').value = '';
-      window.uploadedBase64Image = '';
+      uploadedBase64Image = '';
       document.getElementById('img-preview-container').classList.add('hidden');
       document.getElementById('gift-input-wrapper').classList.add('hidden');
       document.getElementById('btn-toggle-gift').innerText = "+ Adicionar Brinde";
@@ -1359,16 +1425,15 @@
       toggleAdminFormFields();
     };
 
-    window.renderAdminProducts = function() {
+    function renderAdminProducts() {
       const list = document.getElementById('admin-products-list');
-      if (!list) return;
-      list.innerHTML = window.products.map(p => {
+      list.innerHTML = products.map(p => {
         const bottlesText = formatBottlesString(p.g300 || 0, p.g500 || 0, p.g1l || 0);
 
         return `
           <div class="flex items-center justify-between p-3 bg-white rounded-xl border border-slate-200 text-xs">
             <div class="flex items-center gap-3">
-              <img src="${p.image}" class="w-10 h-10 object-cover rounded-lg border" onerror="this.src='https://placehold.co/100?text=FIT'">
+              <img src="${p.image}" class="w-10 h-10 object-cover rounded-lg border">
               <div>
                 <div class="font-extrabold text-slate-800">${p.title}</div>
                 <div class="text-[10px] text-slate-500 font-semibold">${p.category} - R$ ${p.price.toFixed(2)}</div>
@@ -1382,8 +1447,9 @@
           </div>
         `;
       }).join('');
-    };
+    }
 
+    // GESTÃO DE CUPONS
     window.addCoupon = function() {
       const code = document.getElementById('new-coupon-code').value.trim().toUpperCase();
       const val = parseFloat(document.getElementById('new-coupon-val').value);
@@ -1393,39 +1459,40 @@
         return;
       }
 
-      window.coupons.push({ code, discount: val });
-      saveState();
-      renderCouponsList();
-      document.getElementById('new-coupon-code').value = '';
-      document.getElementById('new-coupon-val').value = '';
-      showToast(`Cupom ${code} cadastrado!`);
+      const updatedCoupons = [...coupons, { code, discount: val }];
+      set(ref(db, 'coupons'), updatedCoupons).then(() => {
+        document.getElementById('new-coupon-code').value = '';
+        document.getElementById('new-coupon-val').value = '';
+        showToast(`Cupom ${code} cadastrado!`);
+      });
     };
 
     window.removeCoupon = function(code) {
-      window.coupons = window.coupons.filter(c => c.code !== code);
-      saveState();
-      renderCouponsList();
+      const updatedCoupons = coupons.filter(c => c.code !== code);
+      set(ref(db, 'coupons'), updatedCoupons).then(() => {
+        showToast("Cupom removido.");
+      });
     };
 
-    window.renderCouponsList = function() {
+    function renderCouponsList() {
       const list = document.getElementById('coupons-list');
-      if (!list) return;
-      list.innerHTML = window.coupons.map(c => `
+      list.innerHTML = coupons.map(c => `
         <span class="inline-flex items-center gap-1.5 bg-purple-100 text-hype-purple font-extrabold text-xs px-3 py-1 rounded-full">
           ${c.code} (${c.discount}% OFF)
           <button onclick="removeCoupon('${c.code}')" class="hover:text-red-600 ml-1 font-bold">×</button>
         </span>
       `).join('');
-    };
+    }
 
+    // EXPORTAR CARDÁPIO PDF
     window.generatePDFMenu = function() {
       showToast("Gerando PDF do Cardápio...");
 
       const pdfContainer = document.getElementById('pdf-template-container');
-      const catsInUse = [...new Set(window.products.map(p => p.category))];
+      const catsInUse = [...new Set(products.map(p => p.category))];
 
       let categoriesHTML = catsInUse.map(cat => {
-        const catProds = window.products.filter(p => p.category === cat);
+        const catProds = products.filter(p => p.category === cat);
         return `
           <div style="margin-bottom: 25px;">
             <h3 style="color: #7C3AED; border-bottom: 2px solid #7C3AED; padding-bottom: 5px; font-size: 16px; font-weight: 800; margin-bottom: 12px; text-transform: uppercase;">
@@ -1486,14 +1553,6 @@
         pdfContainer.classList.add('hidden');
         showToast("Cardápio baixado com sucesso!");
       });
-    };
-
-    window.onload = function() {
-      lucide.createIcons();
-      initFirestoreData();
-      updateCartUI();
-      renderCouponsList();
-      toggleAdminFormFields();
     };
   </script>
 </body>
